@@ -12,9 +12,15 @@ public class Spaceship {
     }
 
     public static double getAverageSpeed() {
-        int averageSpeed = Spaceship.list.stream().mapToInt(Spaceship::getSpeed).sum();
+        Double averageSpeed = 0.0;
 
-        return (double) averageSpeed / Spaceship.list.size();
+        for (int i = 0; i < Spaceship.list.size(); i++) {
+            int current = i + 1;
+
+            averageSpeed = (averageSpeed * i / current) + Spaceship.list.get(i).getSpeed() / current;
+        }
+
+        return averageSpeed;
     }
 
     public static int getMinSpeed() {

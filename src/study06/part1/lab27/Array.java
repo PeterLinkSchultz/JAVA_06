@@ -27,8 +27,16 @@ public class Array {
         return Stream.of(array).flatMap(Stream::of).toArray(Integer[]::new);
     }
 
-    public static Integer middleValue(Integer[] array) {
-        return Arrays.stream(array).reduce(0, (sum, next) -> sum + next) / array.length;
+    public static Double middleValue(Integer[] array) {
+        Double value = 0.0;
+
+        for (int i = 0; i < array.length; i++) {
+            int current = i + 1;
+
+            value = (value * i / current) + array[i] / current;
+        }
+
+        return value;
     }
 }
 
